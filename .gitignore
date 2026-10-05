@@ -1,0 +1,21 @@
+# Terraform working directory (providers)
+.terraform/
+
+# State files (may contain sensitive data, including the private key)
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Private keys
+*.pem
+
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
