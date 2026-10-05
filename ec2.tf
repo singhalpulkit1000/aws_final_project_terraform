@@ -23,6 +23,10 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids      = [aws_security_group.ec2_sg.id]
   associate_public_ip_address = true
 
+  # Installs Docker on first boot; changing the script recreates the instance
+  user_data                   = file("${path.module}/scripts/install_docker.sh")
+  user_data_replace_on_change = true
+
   root_block_device {
     volume_size           = var.root_volume_size
     volume_type           = "gp3"

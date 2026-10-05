@@ -13,5 +13,5 @@ resource "aws_key_pair" "ec2_key" {
 resource "local_sensitive_file" "private_key_pem" {
   content         = tls_private_key.ec2_key.private_key_openssh
   filename        = "${path.module}/${var.project_name}-key.pem"
-  file_permission = "0400"
+  file_permission = "0600" # 0400 sets the Windows ReadOnly attribute, which blocks Terraform from rewriting the file
 }
